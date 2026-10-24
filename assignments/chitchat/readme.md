@@ -1,12 +1,5 @@
 # Chit Chat
 
-You need Go, `protoc`, and the Go protobuf plugins. Install the plugins with:
-
-```sh
-go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.36.12
-go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.6.2
-```
-
 From `assignments/chitchat`, regenerate the Go files after editing the proto:
 
 ```sh
