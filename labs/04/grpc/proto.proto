@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option go_package = "grpc/proto";
+
+// students
+// endpoint -> [students]
+
+message Nothing {}
+
+message Student {
+    string name = 1;
+    int32 age = 2;
+}
+
+message Students {
+    repeated Student students = 1;
+}
+
+service ITUService {
+    rpc GetStudents(Nothing) returns (Students);
+}
+
+// protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative --go-grpc_out proto.proto
+
+// protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative proto.proto
