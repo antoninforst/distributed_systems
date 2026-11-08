@@ -1,1 +1,19 @@
+syntax = "proto3";
 
+package mutualexclusion;
+
+option go_package = "ricart-agrawala/proto";
+
+service MutualExclusion {
+    rpc RequestPermission (Request) returns (Reply);
+}
+
+message Request {
+    string node_id = 1;
+    int64 timestamp = 2;
+}
+
+message Reply {
+    string node_id = 1;
+    int64 timestamp = 2;
+}
