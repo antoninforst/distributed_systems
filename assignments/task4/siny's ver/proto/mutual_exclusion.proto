@@ -15,4 +15,5 @@ message Request {
 
 message Reply {
     string node_id = 1;
+    int64 timestamp = 2;
 }
