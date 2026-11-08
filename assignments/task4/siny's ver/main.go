@@ -63,11 +63,11 @@ func main() {
 	log.Printf("Node %s is ready", *nodeID)
 
 	// Give the other nodes time to start.
-	log.Printf("Node %s will request the critical section in seconds", *nodeID)
+	log.Printf("Node %s will request the critical section in 5 seconds", *nodeID)
 	startupDelay := map[string]time.Duration{
-		"A": 2 * time.Second,
-		"B": 6 * time.Second,
-		"C": 10 * time.Second,
+		"A": 5 * time.Second,
+		"B": 5 * time.Second,
+		"C": 5 * time.Second,
 	}
 
 	time.Sleep(startupDelay[*nodeID])
