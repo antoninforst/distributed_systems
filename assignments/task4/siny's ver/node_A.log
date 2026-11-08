@@ -1,0 +1,14 @@
+2026/11/09 00:31:09 Node A listening on localhost:50051
+2026/11/09 00:31:09 Node A is ready
+2026/11/09 00:31:09 Node A will request the critical section in 5 seconds
+2026/11/09 00:31:14 Node A requests the critical section (timestamp: 1)
+2026/11/09 00:31:14 Node A defers REPLY to Node B
+2026/11/09 00:31:14 Node A received REPLY from Node B
+2026/11/09 00:31:14 Node A received REPLY from Node C
+2026/11/09 00:31:14 Node A ENTERS the critical section
+2026/11/09 00:31:14 Node A is executing the critical section
+2026/11/09 00:31:16 Node A EXITS the critical section
+2026/11/09 00:31:16 Node A has finished successfully
+2026/11/09 00:31:16 Node A is still running and waiting for incoming requests
+2026/11/09 00:31:16 Node A sends deferred REPLY to Node B
+2026/11/09 00:31:19 Node A grants permission to Node C
