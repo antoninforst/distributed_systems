@@ -102,7 +102,7 @@ func (n *Node) RequestPermission(
 	req *pb.Request,
 ) (*pb.Reply, error) {
 
-	// Update Lamport clock.
+	// Update Lamport clock after receiving the request.
 	n.receiveTimestamp(req.Timestamp)
 
 	n.Mu.Lock()
@@ -151,8 +151,12 @@ func (n *Node) RequestPermission(
 				req.NodeId,
 			)
 
+			// Increment the clock and attach the timestamp to the reply.
+			timestamp := n.sendTimestamp()
+
 			return &pb.Reply{
-				NodeId: n.ID,
+				NodeId:    n.ID,
+				Timestamp: timestamp,
 			}, nil
 
 		case <-ctx.Done():
@@ -180,8 +184,12 @@ func (n *Node) RequestPermission(
 		req.NodeId,
 	)
 
+	// Increment the clock and attach the timestamp to the reply.
+	timestamp := n.sendTimestamp()
+
 	return &pb.Reply{
-		NodeId: n.ID,
+		NodeId:    n.ID,
+		Timestamp: timestamp,
 	}, nil
 }
 
@@ -330,6 +338,9 @@ func (n *Node) RequestCriticalSection(ctx context.Context) error {
 				cancel()
 				return
 			}
+
+			// Update Lamport clock after receiving the reply.
+			n.receiveTimestamp(reply.Timestamp)
 
 			n.Mu.Lock()
 			n.RepliesReceived[reply.NodeId] = true
