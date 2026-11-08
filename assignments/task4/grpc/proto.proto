@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package mutualexclusion;
+
+option go_package = "task4/grpc;grpc";
+
+message Request {
+  string node_id = 1;
+  uint64 timestamp = 2;
+}
+
+message Reply {
+  string node_id = 1;
+  uint64 timestamp = 2;
+}
+
+service MutualExclusionService {
+  rpc RequestPermission(Request) returns (Reply);
+}
